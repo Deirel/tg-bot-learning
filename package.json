@@ -1,0 +1,19 @@
+{
+  "name": "tg-bot-learning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deirel/tg-bot-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deirel/tg-bot-learning/issues"
+  },
+  "homepage": "https://github.com/Deirel/tg-bot-learning#readme",
+  "description": ""
+}
