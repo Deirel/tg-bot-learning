@@ -27,7 +27,14 @@
       });
 
       tg.onEvent("mainButtonClicked", () => {
-        tg.sendData(item);
+        const url = "https://n8n.north-cat.online/webhook-test/tg-learning-purchase";
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ item }),
+        });
       });
     </script>
   </body>
