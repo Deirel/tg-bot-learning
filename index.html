@@ -19,10 +19,10 @@
         if (item === null) {
           item = button.dataset.purchaseId;
           tg.MainButton.text = "Buy";
-          tg.MainButton.visible = true;
+          tg.MainButton.show();
         } else {
           item = null;
-          tg.MainButton.visible = false;
+          tg.MainButton.hide();
         }
       });
 
