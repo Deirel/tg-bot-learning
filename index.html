@@ -7,11 +7,27 @@
   </head>
   <body>
     <p>Hello World!</p>
-    <button id="testButton">Test</button>
+    <button data-purchase-id="my_purchase_id" id="testButton">Test</button>
 
     <script>
-      document.getElementById("testButton").addEventListener("click", function() {
-        Telegram.WebApp.sendData("test_payment");
+      const tg = Telegram.WebApp;
+
+      let item = null;
+
+      document.getElementById("testButton").addEventListener("click", function(e) {
+        const button = e.target;
+        if (item === null) {
+          item = button.dataset.purchaseId;
+          tg.MainButton.text = "Buy";
+          tg.MainButton.visible = true;
+        } else {
+          item = null;
+          tg.MainButton.visible = false;
+        }
+      });
+
+      tg.onEvent("mainButtonClicked", () => {
+        tg.sendData(item);
       });
     </script>
   </body>
