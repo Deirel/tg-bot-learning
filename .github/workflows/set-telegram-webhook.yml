@@ -1,0 +1,20 @@
+name: Set Telegram Webhook
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  set-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Webhook URL
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          TIMESTAMP=$(date +%s)
+          WEBHOOK_URL="https://${OWNER}.github.io/${REPO}/webhook?cb=${TIMESTAMP}"
+          curl -X POST "https://api.telegram.org/bot${BOT_TOKEN}/setWebhook" -d "url=${WEBHOOK_URL}"
