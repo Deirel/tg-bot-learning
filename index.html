@@ -28,13 +28,12 @@
 
       tg.onEvent("mainButtonClicked", async () => {
         const url = "https://n8n.north-cat.online/webhook-test/tg-learning-purchase";
-        const usedId = tg.initDataUnsafe.user.id;
         const response = await fetch(url, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ item, usedId }),
+          body: JSON.stringify({ item }),
         });
 
         if (!response.ok) {
@@ -44,6 +43,8 @@
 
         const json = await response.json();
         console.log(json);
+
+        tg.openInvoice(json.invoiceLink);
       });
     </script>
   </body>
